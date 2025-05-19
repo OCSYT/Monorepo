@@ -1,24 +1,21 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import './style.css';
+const App = document.getElementById('app');
+const API_URL = 'https://monorepo-n40y.onrender.com/';
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+const FetchData = async () => {
+  const response = await fetch(API_URL);
+  if (!response.ok) {
+    return 'Error fetching data from API'
+  }
+  const data = await response.json();
+  return data.toString();
+}
 
-setupCounter(document.querySelector('#counter'))
+const RenderData = async () => {
+  const data = await FetchData();
+  App.innerHTML = `
+    <h1>API Response</h1>
+    <p>${data}</p>
+  `;
+}
+RenderData();
