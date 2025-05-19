@@ -17,7 +17,7 @@ const RenderData = async () => {
     App.innerHTML = `
     <h1>API Response</h1>
     <p>Message: ${data['Message']}</p>
-    <p>Date: ${data['Date']}</p>
+    <p>UTC Date: ${data['Date']}</p>
   `;
   }, 1000);
 }
