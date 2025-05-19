@@ -12,10 +12,13 @@ const FetchData = async () => {
 }
 
 const RenderData = async () => {
-  const data = await FetchData();
-  App.innerHTML = `
+  setInterval(async () => {
+    const data = JSON.parse(await FetchData());
+    App.innerHTML = `
     <h1>API Response</h1>
-    <p>${data}</p>
+    <p>Message: ${data['Message']}</p>
+    <p>Date: ${data['Date']}</p>
   `;
+  }, 1000);
 }
 RenderData();
