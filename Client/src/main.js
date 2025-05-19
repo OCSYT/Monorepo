@@ -8,7 +8,7 @@ const FetchData = async () => {
     return 'Error fetching data from API'
   }
   const data = await response.json();
-  return data.toString();
+  return await JSON.stringify(data);
 }
 
 const RenderData = async () => {
