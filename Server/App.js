@@ -13,7 +13,7 @@ App.use(express.json());
 App.use(cors(CORSOptions));
 
 App.get("/", (req, res) => {
-	res.json({ Message: "API Response Successful!" });
+	res.json({ Message: "API Response Successful!", Date: new Date().toUTCString() });
 });
 
 App.listen(PORT, () => {
